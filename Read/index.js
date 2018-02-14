@@ -3,7 +3,7 @@ let AWS = require('aws-sdk'),
 
 exports.handler = function(event, context, callback){
 	
-	var params = {
+	let params = {
 		TableName : "recipebook"
 	};
 	
