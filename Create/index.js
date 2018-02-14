@@ -1,9 +1,9 @@
-var AWS = require('aws-sdk'),
+let AWS = require('aws-sdk'),
     
 documentClient = new AWS.DynamoDB.DocumentClient(); 
 
 exports.handler = function(event, context, callback){
-	var params = {
+	let params = {
 		TableName : "recipebook",
 		Item : {
 			"id" : event.id,
