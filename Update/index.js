@@ -1,14 +1,15 @@
 let AWS = require('aws-sdk'),
-	documentClient = new AWS.DynamoDB.DocumentClient(); 
+	
+documentClient = new AWS.DynamoDB.DocumentClient(); 
 
 exports.handler = function(event, context, callback){
 	
 	let params = {
-		TableName : "recipebook",
-		Key: {
+		
+	Key: {
             "id": event.id
          },
-		AttributeUpdates: {
+	AttributeUpdates: {
             'name': {
               Action: "PUT" ,
               Value: event.name 
@@ -17,13 +18,13 @@ exports.handler = function(event, context, callback){
               Action: "PUT" ,
               Value: event.content 
             }
-            
-          }
+          },
+	TableName : "recipebook"
 	};
 	
 	documentClient.update(params, function(err, data) {
-      if (err) callback(err, null);
+      		if (err) callback(err, null);
 		else callback(null, "successfully updated recipe");
-    });
+    	});
 
 }
